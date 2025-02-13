@@ -1138,7 +1138,7 @@
 </div>
 <!-- /level3-pins -->
 </div>
-                <div class="level level--4" aria-label="Level 4">
+                <div id="myButton" class="level level--4" aria-label="Level 4">
 
 
 
@@ -3558,6 +3558,25 @@
 
         <!-- Custom Scripts -->
         
+  <script>
+    // Get reference to the button element
+    const button = document.getElementById('myButton');
+
+    // Define a function to simulate a button click
+    function autoClick() {
+      button.click(); // Triggers the button's click event
+    }
+
+    // Add an event listener to log a message when the button is clicked
+    button.addEventListener('click', function() {
+      console.log('Button was clicked automatically!');
+    });
+
+    // Call the function to auto-click the button after a short delay
+    setTimeout(autoClick, 1000); // Auto-clicks the button after 1 second
+  </script>
+
+
     </body>
 
 </html>
