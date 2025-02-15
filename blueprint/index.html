@@ -19,6 +19,8 @@
 
 
 
+
+
     <link rel="stylesheet" type="text/css" href="../css/base/boostrap.css">
 
     <!-- Fonts -->
@@ -1138,7 +1140,7 @@
 </div>
 <!-- /level3-pins -->
 </div>
-                <div id="myButton" class="level level--4" aria-label="Level 4">
+                <div id="element1"class="level level--4" aria-label="Level 4">
 
 
 
@@ -1470,8 +1472,8 @@
 
         <div class="main-sidebar">
             <button class="boxbutton mallnav__button--up" aria-label="Go up"><svg class="icon icon--angle-down"><use xlink:href="#icon-angle-up"></use></svg></button>
-            <button class="boxbutton boxbutton--dark mallnav__button--all-levels" aria-label="Back to all levels"><svg class="icon icon--stack"><use xlink:href="#icon-stack"></use></svg></button>
-            <button class="boxbutton mallnav__button--down" aria-label="Go down"><svg class="icon icon--angle-down"><use xlink:href="#icon-angle-down"></use></svg></button>
+            <button id="element3" class="boxbutton boxbutton--dark mallnav__button--all-levels" aria-label="Back to all levels"><svg class="icon icon--stack"><use xlink:href="#icon-stack"></use></svg></button>
+            <button id="element2" class="boxbutton mallnav__button--down" aria-label="Go down"><svg class="icon icon--angle-down"><use xlink:href="#icon-angle-down"></use></svg></button>
 
 
 
@@ -3555,26 +3557,36 @@
 
 
 
+    <script>
+        // List of element IDs to be clicked in order
+        const elementIds = ["element1", "element2", "element3"];
 
-        <!-- Custom Scripts -->
-        
-  <script>
-    // Get reference to the button element
-    const button = document.getElementById('myButton');
+        // Function to click elements sequentially
+        function autoClickElements(index = 0) {
+            if (index < elementIds.length) {
+                const element = document.getElementById(elementIds[index]);
+                if (element) {
+                    element.click(); // Simulate click
+                }
 
-    // Define a function to simulate a button click
-    function autoClick() {
-      button.click(); // Triggers the button's click event
-    }
+                // Delay before clicking the next element
+                setTimeout(() => autoClickElements(index + 1), 1000);
+            }
+        }
 
-    // Add an event listener to log a message when the button is clicked
-    button.addEventListener('click', function() {
-      console.log('Button was clicked automatically!');
-    });
+        // Add click event listeners to log messages
+        elementIds.forEach((id, i) => {
+            const element = document.getElementById(id);
+            if (element) {
+                element.addEventListener('click', function() {
+                    console.log(`${id} was clicked automatically!`);
+                });
+            }
+        });
 
-    // Call the function to auto-click the button after a short delay
-    setTimeout(autoClick, 1000); // Auto-clicks the button after 1 second
-  </script>
+        // Start clicking elements after a short delay
+        setTimeout(() => autoClickElements(), 1000);
+    </script>
 
 
     </body>
