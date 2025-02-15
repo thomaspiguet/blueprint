@@ -1472,8 +1472,8 @@
 
         <div class="main-sidebar">
             <button class="boxbutton mallnav__button--up" aria-label="Go up"><svg class="icon icon--angle-down"><use xlink:href="#icon-angle-up"></use></svg></button>
-            <button id="element3" class="boxbutton boxbutton--dark mallnav__button--all-levels" aria-label="Back to all levels"><svg class="icon icon--stack"><use xlink:href="#icon-stack"></use></svg></button>
-            <button id="element2" class="boxbutton mallnav__button--down" aria-label="Go down"><svg class="icon icon--angle-down"><use xlink:href="#icon-angle-down"></use></svg></button>
+            <button id="element2" class="boxbutton boxbutton--dark mallnav__button--all-levels" aria-label="Back to all levels"><svg class="icon icon--stack"><use xlink:href="#icon-stack"></use></svg></button>
+            <button id="element3" class="boxbutton mallnav__button--down" aria-label="Go down"><svg class="icon icon--angle-down"><use xlink:href="#icon-angle-down"></use></svg></button>
 
 
 
@@ -3559,12 +3559,18 @@
 
     <script>
         // List of element IDs to be clicked in order
-        const elementIds = ["element1", "element2", "element3"];
+        const elementClicks = [
+            "element1", 
+            "element2", 
+            "element3", 
+            "element3", // Click element3 twice
+            "element2"  // Go back to element2
+        ];
 
         // Function to click elements sequentially
         function autoClickElements(index = 0) {
-            if (index < elementIds.length) {
-                const element = document.getElementById(elementIds[index]);
+            if (index < elementClicks.length) {
+                const element = document.getElementById(elementClicks[index]);
                 if (element) {
                     element.click(); // Simulate click
                 }
@@ -3575,7 +3581,7 @@
         }
 
         // Add click event listeners to log messages
-        elementIds.forEach((id, i) => {
+        elementClicks.forEach((id) => {
             const element = document.getElementById(id);
             if (element) {
                 element.addEventListener('click', function() {
@@ -3587,7 +3593,6 @@
         // Start clicking elements after a short delay
         setTimeout(() => autoClickElements(), 1000);
     </script>
-
 
     </body>
 
